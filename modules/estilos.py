@@ -8,6 +8,7 @@ tema de Streamlit y reglas CSS antiguas.
 CSS = """
 <style>
 :root {
+    color-scheme: light;
     --cat-yellow: #FFCD11;
     --cat-yellow-hover: #F2B800;
     --cat-ink: #1A1A1A;
@@ -23,6 +24,7 @@ CSS = """
 html, body,
 [data-testid="stAppViewContainer"],
 [data-testid="stMain"] {
+    color-scheme: light !important;
     background: var(--cat-canvas) !important;
     color: var(--cat-ink) !important;
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
@@ -279,6 +281,54 @@ div[data-baseweb="input"] input,
 div[data-baseweb="select"] * {
     color: var(--cat-ink) !important;
     -webkit-text-fill-color: var(--cat-ink) !important;
+}
+
+/* Campos numéricos: fuerza modo claro en Safari/iOS y Android */
+[data-testid="stNumberInput"],
+[data-testid="stNumberInput"] [data-baseweb="input"],
+[data-testid="stNumberInput"] [data-baseweb="base-input"] {
+    color-scheme: light !important;
+    background-color: #FFFFFF !important;
+}
+[data-testid="stNumberInput"] [data-baseweb="input"] {
+    overflow: hidden !important;
+    border: 1px solid #73797D !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+}
+[data-testid="stNumberInput"] input,
+[data-testid="stNumberInput"] input[type="number"] {
+    min-height: 48px !important;
+    background: #FFFFFF !important;
+    color: #1A1A1A !important;
+    caret-color: #1A1A1A !important;
+    -webkit-text-fill-color: #1A1A1A !important;
+    -webkit-appearance: none !important;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+}
+[data-testid="stNumberInput"] button {
+    min-width: 46px !important;
+    background: #24282B !important;
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    border: 0 !important;
+    border-left: 1px solid #4A5054 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+[data-testid="stNumberInput"] button:hover {
+    background: #343A3E !important;
+    color: #FFCD11 !important;
+    -webkit-text-fill-color: #FFCD11 !important;
+}
+[data-testid="stNumberInput"] button svg {
+    fill: currentColor !important;
+    color: currentColor !important;
+}
+[data-testid="stNumberInput"]:focus-within [data-baseweb="input"] {
+    border-color: #B28A00 !important;
+    box-shadow: 0 0 0 2px rgba(255,205,17,.28) !important;
 }
 .stButton > button,
 .stFormSubmitButton > button,
