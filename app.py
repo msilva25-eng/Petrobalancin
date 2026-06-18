@@ -132,15 +132,27 @@ if not st.session_state["app_started"]:
     }}
     .inicio-etiqueta {{
         display: inline-block;
-        margin-top: 14px;
-        padding: 5px 12px;
-        color: #1A1A1A;
-        background: #FFF7D1;
-        border: 1px solid #FFCD11;
-        border-radius: 999px;
-        font-size: 11px;
+        margin-top: 18px;
+        margin-bottom: 14px;
+        padding: 0 0 6px;
+        color: #5B4800;
+        background: transparent;
+        border: 0;
+        border-bottom: 3px solid #FFCD11;
+        border-radius: 0;
+        font-size: 10px;
         font-weight: 800;
-        letter-spacing: 1.2px;
+        line-height: 1.2;
+        letter-spacing: 1.8px;
+    }}
+    .inicio-titulo {{
+        margin: 0 !important;
+        color: #1A1A1A !important;
+        font-size: 42px !important;
+        font-weight: 950 !important;
+        line-height: 1.05 !important;
+        letter-spacing: -1.2px !important;
+        text-shadow: 0 2px 0 rgba(255, 205, 17, 0.18);
     }}
     .inicio-separador {{
         width: 54px;
@@ -176,6 +188,16 @@ if not st.session_state["app_started"]:
         .bienvenida-tarjeta {{ padding: 62px 22px 26px; border-radius: 20px; }}
         .inicio-unica {{ top: 18px; right: 18px; }}
         .inicio-unica img {{ width: 36px; height: 36px; }}
+        .inicio-etiqueta {{
+            margin-top: 16px;
+            margin-bottom: 12px;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }}
+        .inicio-titulo {{
+            font-size: 32px !important;
+            letter-spacing: -0.8px !important;
+        }}
         .st-key-btn_comenzar_simulacion div[data-testid="stButton"],
         .st-key-btn_comenzar_simulacion div[data-testid="stButton"] > button {{
             width: min(100%, 290px) !important;
