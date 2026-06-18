@@ -100,8 +100,8 @@ if not st.session_state["app_started"]:
         width: min(100%, 680px);
         padding: 38px 48px 30px;
         text-align: center;
-        background: linear-gradient(145deg, #FFFFFF 0%, #F7FBFF 100%);
-        border: 1px solid #D9E8F5;
+        background: linear-gradient(145deg, #FFFFFF 0%, #F5F5F2 100%);
+        border: 1px solid #D4D6D3;
         border-radius: 26px;
         box-shadow: 0 22px 55px rgba(31, 41, 55, 0.10);
         overflow: hidden;
@@ -111,7 +111,7 @@ if not st.session_state["app_started"]:
         position: absolute;
         inset: 0 0 auto 0;
         height: 7px;
-        background: linear-gradient(90deg, #F2B705 0%, #FFD85A 48%, #4A90C2 100%);
+        background: linear-gradient(90deg, #202428 0%, #C89B00 50%, #202428 100%);
     }}
     .inicio-unica {{
         position: absolute;
@@ -134,8 +134,9 @@ if not st.session_state["app_started"]:
         display: inline-block;
         margin-top: 14px;
         padding: 5px 12px;
-        color: #2E6FA3;
-        background: #EAF4FF;
+        color: #202428;
+        background: #F3E9BF;
+        border: 1px solid #C89B00;
         border-radius: 999px;
         font-size: 11px;
         font-weight: 800;
@@ -146,7 +147,7 @@ if not st.session_state["app_started"]:
         height: 4px;
         margin: 22px auto 0;
         border-radius: 999px;
-        background: #F2B705;
+        background: #C89B00;
     }}
     .st-key-btn_comenzar_simulacion {{
         width: 100% !important;
@@ -162,12 +163,12 @@ if not st.session_state["app_started"]:
         min-height: 54px !important;
         border-radius: 14px !important;
         font-size: 16px !important;
-        box-shadow: 0 10px 24px rgba(242, 183, 5, 0.28) !important;
+        box-shadow: 0 10px 24px rgba(32, 36, 40, 0.18) !important;
         transition: transform .2s ease, box-shadow .2s ease !important;
     }}
     .st-key-btn_comenzar_simulacion div[data-testid="stButton"] > button:hover {{
         transform: translateY(-2px);
-        box-shadow: 0 14px 28px rgba(217, 154, 0, 0.32) !important;
+        box-shadow: 0 14px 28px rgba(32, 36, 40, 0.24) !important;
     }}
     @media (max-width: 640px) {{
         section[data-testid="stMain"] .block-container {{ padding-top: 1rem !important; }}
@@ -206,12 +207,12 @@ with st.sidebar:
     logo_side = b64img("assets/logo_petrobalancin.png")
     if logo_side:
         st.markdown(
-            f'<div style="text-align:center;padding:14px 0 6px 0;">'
+            f'<div class="sidebar-brand">'
             f'<img src="data:image/png;base64,{logo_side}" '
             f'style="width:70px;height:70px;object-fit:contain;">'
             f'<div style="font-size:17px;font-weight:900;color:#1F2937;margin-top:6px;">'
             f'Petrobalancín</div>'
-            f'<div style="font-size:10px;color:#4A90C2;font-weight:600;margin-top:2px;">'
+            f'<div style="font-size:10px;color:#AEB3B0;font-weight:600;margin-top:2px;">'
             f'Analizador técnico de capacidad petrolera</div>'
             f'</div>',
             unsafe_allow_html=True
@@ -736,7 +737,7 @@ elif SA == "Acerca de la app":
     st.markdown("""
     <div class="card-resultado">
         <div class="label">Tecnologías utilizadas</div>
-        <div class="valor" style="font-size:15px;color:#4A90C2;">Python + Streamlit</div>
+        <div class="valor" style="font-size:15px;color:#755B00;">Python + Streamlit</div>
         <div class="unidad">Pandas · Plotly · ReportLab · OpenPyXL</div>
     </div>
     """, unsafe_allow_html=True)
