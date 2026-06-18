@@ -58,9 +58,3 @@ Coloca los logos en la carpeta `assets/`:
 2. Ve a https://share.streamlit.io
 3. Selecciona el repositorio y el archivo `app.py`.
 4. Haz clic en Deploy.
-
-## Universidad
-
-UNICA — Universidad Cardenal Miguel Obando Bravo  
-Ingeniería Industrial — Mecánica  
-Docente: Yamil Pavon
