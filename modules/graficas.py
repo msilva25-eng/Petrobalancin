@@ -13,7 +13,7 @@ def _layout(titulo):
     return dict(
         title=dict(
             text=titulo, x=0.02, xanchor="left",
-            font=dict(size=17, color=NEGRO, family="Arial Black, Arial")
+            font=dict(size=15, color=NEGRO, family="Arial, sans-serif")
         ),
         plot_bgcolor="#FBFBF9",
         paper_bgcolor="#FBFBF9",
@@ -121,6 +121,7 @@ def grafica_meta(produccion_bbl, meta_bbl):
     fig = go.Figure(go.Indicator(
         mode="gauge+number+delta",
         value=produccion_bbl,
+        domain={"x": [0, 1], "y": [0, 0.86]},
         delta={"reference": meta_bbl},
         number={"suffix": " bbl", "font": {"color": NEGRO}},
         gauge={
@@ -132,7 +133,10 @@ def grafica_meta(produccion_bbl, meta_bbl):
                 "value": meta_bbl,
             },
         },
-        title={"text": "Cumplimiento de meta (bbl)", "font": {"color": NEGRO}},
+        title={
+            "text": "Cumplimiento de meta (bbl)",
+            "font": {"color": NEGRO, "size": 13, "family": "Arial, sans-serif"},
+        },
     ))
     fig.update_layout(**_layout("Comparación con la meta de producción"))
     return fig
