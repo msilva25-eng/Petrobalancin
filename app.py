@@ -100,7 +100,7 @@ if not st.session_state["app_started"]:
         width: min(100%, 680px);
         padding: 38px 48px 30px;
         text-align: center;
-        background: linear-gradient(145deg, #FFFFFF 0%, #F5F5F2 100%);
+        background: linear-gradient(145deg, #FFFFFF 0%, #F4F5F2 100%);
         border: 1px solid #D4D6D3;
         border-radius: 26px;
         box-shadow: 0 22px 55px rgba(31, 41, 55, 0.10);
@@ -111,7 +111,7 @@ if not st.session_state["app_started"]:
         position: absolute;
         inset: 0 0 auto 0;
         height: 7px;
-        background: linear-gradient(90deg, #202428 0%, #C89B00 50%, #202428 100%);
+        background: linear-gradient(90deg, #1A1A1A 0%, #FFCD11 50%, #1A1A1A 100%);
     }}
     .inicio-unica {{
         position: absolute;
@@ -134,9 +134,9 @@ if not st.session_state["app_started"]:
         display: inline-block;
         margin-top: 14px;
         padding: 5px 12px;
-        color: #202428;
-        background: #F3E9BF;
-        border: 1px solid #C89B00;
+        color: #1A1A1A;
+        background: #FFF7D1;
+        border: 1px solid #FFCD11;
         border-radius: 999px;
         font-size: 11px;
         font-weight: 800;
@@ -147,7 +147,7 @@ if not st.session_state["app_started"]:
         height: 4px;
         margin: 22px auto 0;
         border-radius: 999px;
-        background: #C89B00;
+        background: #FFCD11;
     }}
     .st-key-btn_comenzar_simulacion {{
         width: 100% !important;
@@ -737,7 +737,7 @@ elif SA == "Acerca de la app":
     st.markdown("""
     <div class="card-resultado">
         <div class="label">Tecnologías utilizadas</div>
-        <div class="valor" style="font-size:15px;color:#755B00;">Python + Streamlit</div>
+        <div class="valor" style="font-size:15px;color:#5C4A00;">Python + Streamlit</div>
         <div class="unidad">Pandas · Plotly · ReportLab · OpenPyXL</div>
     </div>
     """, unsafe_allow_html=True)
