@@ -244,13 +244,15 @@ with st.sidebar:
     navegacion_pendiente = st.session_state.pop("navegacion_pendiente", None)
     if navegacion_pendiente:
         st.session_state["nav_radio"] = navegacion_pendiente
-
-    idx_actual = SECCIONES.index(st.session_state["seccion_actual"]) \
-        if st.session_state["seccion_actual"] in SECCIONES else 0
+    elif st.session_state.get("nav_radio") not in SECCIONES:
+        st.session_state["nav_radio"] = (
+            st.session_state["seccion_actual"]
+            if st.session_state["seccion_actual"] in SECCIONES
+            else "Inicio"
+        )
 
     seccion = st.radio(
         "Navegación", SECCIONES,
-        index=idx_actual,
         key="nav_radio",
         label_visibility="collapsed"
     )
@@ -609,22 +611,22 @@ elif SA == "Gráficas":
 
         if grafica_seleccionada == "Producción acumulada por día":
             fig1 = grafica_produccion_diaria(r["q_dia_litros"], p["dias"])
-            st.plotly_chart(fig1, use_container_width=True, config=config_grafica)
+            st.plotly_chart(fig1, width="stretch", config=config_grafica)
         elif grafica_seleccionada == "Producción acumulada por hora":
             fig2 = grafica_por_hora(r["q_hora_litros"], p["horas_dia"], p["tiempo_activo_pct"])
-            st.plotly_chart(fig2, use_container_width=True, config=config_grafica)
+            st.plotly_chart(fig2, width="stretch", config=config_grafica)
         elif grafica_seleccionada == "Comparación por unidad de medida":
             fig3 = grafica_comparacion_unidades(r["q_total_litros"], r["q_total_m3"], r["q_total_barriles"])
-            st.plotly_chart(fig3, use_container_width=True, config=config_grafica)
+            st.plotly_chart(fig3, width="stretch", config=config_grafica)
         elif grafica_seleccionada == "Comparación con la meta":
             fig4 = grafica_meta(r["q_total_barriles"], meta)
-            st.plotly_chart(fig4, use_container_width=True, config=config_grafica)
+            st.plotly_chart(fig4, width="stretch", config=config_grafica)
         else:
             fig5 = grafica_sensibilidad(
                 p["diametro_cm"], p["carrera_cm"], p["eficiencia_pct"],
                 p["horas_dia"], p["dias"], p["tiempo_activo_pct"]
             )
-            st.plotly_chart(fig5, use_container_width=True, config=config_grafica)
+            st.plotly_chart(fig5, width="stretch", config=config_grafica)
 
         st.markdown("---")
         if st.button("Exportar reporte PDF →", key="btn_exportar_graficas"):
@@ -641,7 +643,7 @@ elif SA == "Historial":
     if df.empty:
         st.info("El historial está vacío. Realiza un cálculo y guárdalo desde la sección Resultados.")
     else:
-        st.dataframe(df, use_container_width=True)
+        st.dataframe(df, width="stretch")
         st.markdown(f"**Total de cálculos registrados:** {len(df)}")
 
     st.markdown("---")
@@ -734,7 +736,7 @@ elif SA == "Exportar reporte":
                 data=st.session_state["pdf_bytes"],
                 file_name=st.session_state["pdf_nombre"],
                 mime="application/pdf",
-                use_container_width=True,
+                width="stretch",
                 key="btn_dl_pdf"
             )
 
