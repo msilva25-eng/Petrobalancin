@@ -12,7 +12,7 @@ ROJO     = "#DC2626"
 def _layout(titulo):
     return dict(
         title=dict(
-            text=titulo, x=0.02, xanchor="left",
+            text=titulo, x=0.5, xanchor="center",
             font=dict(size=15, color=NEGRO, family="Arial, sans-serif")
         ),
         plot_bgcolor="#FBFBF9",
@@ -22,7 +22,7 @@ def _layout(titulo):
         margin=dict(l=82, r=22, t=82, b=82),
         xaxis=dict(
             color=NEGRO,
-            title_font=dict(color=NEGRO, size=15, family="Arial Black, Arial"),
+            title_font=dict(color=NEGRO, size=13, family="Arial, sans-serif"),
             tickfont=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
             gridcolor="#D9DBD8",
             linecolor=NEGRO,
@@ -32,7 +32,7 @@ def _layout(titulo):
         ),
         yaxis=dict(
             color=NEGRO,
-            title_font=dict(color=NEGRO, size=15, family="Arial Black, Arial"),
+            title_font=dict(color=NEGRO, size=13, family="Arial, sans-serif"),
             tickfont=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
             gridcolor="#D9DBD8",
             linecolor=NEGRO,
@@ -48,8 +48,8 @@ def _aplicar_ejes(fig, titulo_x, titulo_y):
     """Fuerza títulos y marcas oscuras y legibles en pantallas móviles."""
     fig.update_xaxes(
         title=dict(
-            text=f"<b>{titulo_x}</b>",
-            font=dict(color=NEGRO, size=15, family="Arial Black, Arial"),
+            text=titulo_x,
+            font=dict(color=NEGRO, size=13, family="Arial, sans-serif"),
             standoff=16,
         ),
         tickfont=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
@@ -60,8 +60,8 @@ def _aplicar_ejes(fig, titulo_x, titulo_y):
     )
     fig.update_yaxes(
         title=dict(
-            text=f"<b>{titulo_y}</b>",
-            font=dict(color=NEGRO, size=15, family="Arial Black, Arial"),
+            text=titulo_y,
+            font=dict(color=NEGRO, size=13, family="Arial, sans-serif"),
             standoff=16,
         ),
         tickfont=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
