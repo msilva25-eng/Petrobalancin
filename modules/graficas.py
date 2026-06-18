@@ -18,28 +18,59 @@ def _layout(titulo):
         plot_bgcolor="#FBFBF9",
         paper_bgcolor="#FBFBF9",
         font=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
-        height=430,
-        margin=dict(l=62, r=18, t=68, b=58),
+        height=470,
+        margin=dict(l=82, r=22, t=82, b=82),
         xaxis=dict(
             color=NEGRO,
-            title_font=dict(color=NEGRO, size=13),
-            tickfont=dict(color=NEGRO, size=11),
+            title_font=dict(color=NEGRO, size=15, family="Arial Black, Arial"),
+            tickfont=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
             gridcolor="#D9DBD8",
-            linecolor="#626A70",
+            linecolor=NEGRO,
+            linewidth=1.5,
             zerolinecolor="#A7ACA8",
             automargin=True,
         ),
         yaxis=dict(
             color=NEGRO,
-            title_font=dict(color=NEGRO, size=13),
-            tickfont=dict(color=NEGRO, size=11),
+            title_font=dict(color=NEGRO, size=15, family="Arial Black, Arial"),
+            tickfont=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
             gridcolor="#D9DBD8",
-            linecolor="#626A70",
+            linecolor=NEGRO,
+            linewidth=1.5,
             zerolinecolor="#A7ACA8",
             automargin=True,
         ),
         hoverlabel=dict(bgcolor="#1A1A1A", font_color="#FFFFFF"),
     )
+
+
+def _aplicar_ejes(fig, titulo_x, titulo_y):
+    """Fuerza títulos y marcas oscuras y legibles en pantallas móviles."""
+    fig.update_xaxes(
+        title=dict(
+            text=f"<b>{titulo_x}</b>",
+            font=dict(color=NEGRO, size=15, family="Arial Black, Arial"),
+            standoff=16,
+        ),
+        tickfont=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
+        color=NEGRO,
+        linecolor=NEGRO,
+        linewidth=1.5,
+        automargin=True,
+    )
+    fig.update_yaxes(
+        title=dict(
+            text=f"<b>{titulo_y}</b>",
+            font=dict(color=NEGRO, size=15, family="Arial Black, Arial"),
+            standoff=16,
+        ),
+        tickfont=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
+        color=NEGRO,
+        linecolor=NEGRO,
+        linewidth=1.5,
+        automargin=True,
+    )
+    return fig
 
 def grafica_produccion_diaria(q_dia_litros, dias):
     dias_arr = list(range(1, dias + 1))
@@ -54,10 +85,8 @@ def grafica_produccion_diaria(q_dia_litros, dias):
     ))
     fig.update_layout(
         **_layout("Producción acumulada por día"),
-        xaxis_title="Días",
-        yaxis_title="Litros",
     )
-    return fig
+    return _aplicar_ejes(fig, "Días", "Litros")
 
 def grafica_por_hora(q_hora_litros, horas_dia, tiempo_activo_pct):
     horas = list(range(1, int(horas_dia) + 1))
@@ -70,11 +99,9 @@ def grafica_por_hora(q_hora_litros, horas_dia, tiempo_activo_pct):
         name="Producción por hora (L)"
     ))
     fig.update_layout(
-        **_layout("Producción acumulada por hora de operación"),
-        xaxis_title="Hora",
-        yaxis_title="Litros",
+        **_layout("Producción acumulada por hora<br>de operación"),
     )
-    return fig
+    return _aplicar_ejes(fig, "Hora", "Litros")
 
 def grafica_comparacion_unidades(litros, m3, barriles):
     fig = go.Figure(go.Bar(
@@ -86,7 +113,7 @@ def grafica_comparacion_unidades(litros, m3, barriles):
         textfont=dict(color=NEGRO, size=12),
     ))
     fig.update_layout(**_layout("Producción total por unidad de medida"))
-    return fig
+    return _aplicar_ejes(fig, "Unidad de medida", "Producción total")
 
 def grafica_meta(produccion_bbl, meta_bbl):
     pct = min((produccion_bbl / meta_bbl) * 100, 100)
@@ -127,8 +154,6 @@ def grafica_sensibilidad(diametro, carrera, eficiencia, horas, dias, tiempo_acti
         name="Producción (bbl)"
     ))
     fig.update_layout(
-        **_layout("Sensibilidad: producción vs. ciclos por minuto"),
-        xaxis_title="Ciclos por minuto",
-        yaxis_title="Producción total (bbl)",
+        **_layout("Sensibilidad: producción vs.<br>ciclos por minuto"),
     )
-    return fig
+    return _aplicar_ejes(fig, "Ciclos por minuto", "Producción total (bbl)")
