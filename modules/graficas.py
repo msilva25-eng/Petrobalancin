@@ -11,11 +11,34 @@ ROJO     = "#DC2626"
 
 def _layout(titulo):
     return dict(
-        title=dict(text=titulo, font=dict(size=14, color=NEGRO)),
+        title=dict(
+            text=titulo, x=0.02, xanchor="left",
+            font=dict(size=17, color=NEGRO, family="Arial Black, Arial")
+        ),
         plot_bgcolor="#FFFFFF",
         paper_bgcolor="#FFFFFF",
-        font=dict(color=GRIS, size=11),
-        margin=dict(l=40, r=20, t=50, b=40),
+        font=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
+        height=430,
+        margin=dict(l=62, r=18, t=68, b=58),
+        xaxis=dict(
+            color=NEGRO,
+            title_font=dict(color=NEGRO, size=13),
+            tickfont=dict(color=NEGRO, size=11),
+            gridcolor="#D1D5DB",
+            linecolor="#4B5563",
+            zerolinecolor="#9CA3AF",
+            automargin=True,
+        ),
+        yaxis=dict(
+            color=NEGRO,
+            title_font=dict(color=NEGRO, size=13),
+            tickfont=dict(color=NEGRO, size=11),
+            gridcolor="#D1D5DB",
+            linecolor="#4B5563",
+            zerolinecolor="#9CA3AF",
+            automargin=True,
+        ),
+        hoverlabel=dict(bgcolor="#15191E", font_color="#FFFFFF"),
     )
 
 def grafica_produccion_diaria(q_dia_litros, dias):
@@ -25,8 +48,8 @@ def grafica_produccion_diaria(q_dia_litros, dias):
     fig.add_trace(go.Scatter(
         x=dias_arr, y=acum,
         mode="lines+markers",
-        line=dict(color=AMARILLO, width=2),
-        marker=dict(size=4),
+        line=dict(color=AMARILLO, width=4),
+        marker=dict(size=7, color=AMARILLO, line=dict(color=NEGRO, width=1)),
         name="Producción acumulada (L)"
     ))
     fig.update_layout(
@@ -60,6 +83,7 @@ def grafica_comparacion_unidades(litros, m3, barriles):
         marker_color=[AMARILLO, NEGRO, GRIS],
         text=[f"{litros:,.1f}", f"{m3:,.4f}", f"{barriles:,.3f}"],
         textposition="outside",
+        textfont=dict(color=NEGRO, size=12),
     ))
     fig.update_layout(**_layout("Producción total por unidad de medida"))
     return fig
@@ -71,9 +95,9 @@ def grafica_meta(produccion_bbl, meta_bbl):
         mode="gauge+number+delta",
         value=produccion_bbl,
         delta={"reference": meta_bbl},
-        number={"suffix": " bbl"},
+        number={"suffix": " bbl", "font": {"color": NEGRO}},
         gauge={
-            "axis": {"range": [0, meta_bbl * 1.2]},
+            "axis": {"range": [0, meta_bbl * 1.2], "tickfont": {"color": NEGRO}},
             "bar":  {"color": color},
             "threshold": {
                 "line": {"color": NEGRO, "width": 3},
@@ -81,7 +105,7 @@ def grafica_meta(produccion_bbl, meta_bbl):
                 "value": meta_bbl,
             },
         },
-        title={"text": "Cumplimiento de meta (bbl)"},
+        title={"text": "Cumplimiento de meta (bbl)", "font": {"color": NEGRO}},
     ))
     fig.update_layout(**_layout("Comparación con la meta de producción"))
     return fig
@@ -99,7 +123,7 @@ def grafica_sensibilidad(diametro, carrera, eficiencia, horas, dias, tiempo_acti
     fig.add_trace(go.Scatter(
         x=ciclos_range, y=producciones,
         mode="lines",
-        line=dict(color=AMARILLO, width=2),
+        line=dict(color=AMARILLO, width=4),
         name="Producción (bbl)"
     ))
     fig.update_layout(

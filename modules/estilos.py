@@ -372,6 +372,157 @@ html, body, [data-testid="stAppViewContainer"] {
     .inicio-titulo { font-size: 22px; }
     .header-petro .titulo-bloque { display: none; }
 }
+
+/* ── Tema industrial de alto contraste ── */
+html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
+    background-color: #F2EFE7 !important;
+    color: #171A1F !important;
+}
+[data-testid="stMainBlockContainer"] {
+    color: #171A1F !important;
+}
+[data-testid="stMainBlockContainer"] h1,
+[data-testid="stMainBlockContainer"] h2,
+[data-testid="stMainBlockContainer"] h3,
+[data-testid="stMainBlockContainer"] p,
+[data-testid="stMainBlockContainer"] label {
+    color: #171A1F;
+}
+
+/* Barra lateral carbón */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #15191E 0%, #222831 100%) !important;
+    border-right: 3px solid #F2B705 !important;
+}
+[data-testid="stSidebar"] * { color: #F8F5EC !important; }
+[data-testid="stSidebar"] .stRadio label {
+    color: #F8F5EC !important;
+    font-weight: 600 !important;
+}
+[data-testid="stSidebar"] .stRadio label:hover { color: #F2B705 !important; }
+[data-testid="stSidebar"] hr { border-color: #4B535E !important; }
+.sidebar-institucional {
+    background: #292F38 !important;
+    border-color: #565E69 !important;
+}
+
+/* Control visible del menú en teléfonos */
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="collapsedControl"],
+[data-testid="stExpandSidebarButton"] {
+    position: fixed !important;
+    top: 12px !important;
+    left: 12px !important;
+    width: auto !important;
+    min-width: 92px !important;
+    height: 44px !important;
+    padding: 0 13px !important;
+    background: #F2B705 !important;
+    color: #171A1F !important;
+    border: 2px solid #171A1F !important;
+    border-radius: 12px !important;
+    box-shadow: 0 7px 18px rgba(0,0,0,.24) !important;
+    z-index: 999999 !important;
+}
+[data-testid="stSidebarCollapsedControl"]::after,
+[data-testid="collapsedControl"]::after,
+[data-testid="stExpandSidebarButton"]::after {
+    content: "MENÚ";
+    margin-left: 7px;
+    color: #171A1F;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .5px;
+}
+[data-testid="stSidebarCollapsedControl"] svg,
+[data-testid="collapsedControl"] svg,
+[data-testid="stExpandSidebarButton"] svg {
+    fill: #171A1F !important;
+    color: #171A1F !important;
+}
+
+/* Encabezado carbón y tarjetas claras */
+.header-petro {
+    background: linear-gradient(105deg, #171A1F 0%, #303740 100%) !important;
+    border: 1px solid #454D57;
+    box-shadow: 0 9px 24px rgba(23,26,31,.16);
+}
+.header-petro .titulo-bloque .titulo-principal { color: #FFFFFF !important; }
+.header-petro .titulo-bloque .titulo-sub { color: #F2B705 !important; }
+.card-resultado, .export-card, .guia-box {
+    background: #FFFFFF !important;
+    border-color: #D4D0C7 !important;
+    box-shadow: 0 5px 16px rgba(23,26,31,.08) !important;
+}
+.seccion-titulo { color: #242A31 !important; border-left-color: #F2B705 !important; }
+.guia-box, .guia-box *, .export-card, .export-card * { color: #242A31; }
+.guia-box .guia-titulo { color: #2E6FA3 !important; }
+
+/* Entradas y selectores siempre legibles */
+div[data-baseweb="input"], div[data-baseweb="select"] > div {
+    background: #FFFFFF !important;
+    color: #171A1F !important;
+    border-color: #8A9099 !important;
+}
+div[data-baseweb="input"] input,
+div[data-baseweb="select"] * {
+    color: #171A1F !important;
+    -webkit-text-fill-color: #171A1F !important;
+}
+
+/* Todos los botones de acción, incluido el formulario */
+.stButton > button,
+.stFormSubmitButton > button,
+.stDownloadButton > button {
+    background: #F2B705 !important;
+    color: #171A1F !important;
+    -webkit-text-fill-color: #171A1F !important;
+    border: 2px solid #171A1F !important;
+    font-weight: 800 !important;
+    box-shadow: 0 7px 16px rgba(242,183,5,.22) !important;
+}
+.stButton > button:hover,
+.stFormSubmitButton > button:hover,
+.stDownloadButton > button:hover {
+    background: #FFD34D !important;
+    color: #111111 !important;
+    border-color: #111111 !important;
+}
+.stButton > button:disabled,
+.stFormSubmitButton > button:disabled {
+    background: #D7B64B !important;
+    color: #171A1F !important;
+    -webkit-text-fill-color: #171A1F !important;
+    opacity: .82 !important;
+}
+
+/* Contenedor de Plotly */
+[data-testid="stPlotlyChart"] {
+    background: #FFFFFF;
+    border: 1px solid #C9C5BC;
+    border-radius: 14px;
+    padding: 4px;
+    box-shadow: 0 8px 22px rgba(23,26,31,.10);
+    overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    [data-testid="stMainBlockContainer"] {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+        padding-top: 72px !important;
+    }
+    [data-testid="stMainBlockContainer"] h2 { font-size: 34px !important; line-height: 1.08 !important; }
+    .header-petro { padding: 10px 12px !important; }
+    .card-resultado, .guia-box, .export-card { border-radius: 12px !important; }
+    [data-testid="stPlotlyChart"] { margin-top: 8px; }
+    .stFormSubmitButton > button,
+    .stButton > button,
+    .stDownloadButton > button {
+        min-height: 50px !important;
+        font-size: 15px !important;
+    }
+}
 </style>
 """
 
