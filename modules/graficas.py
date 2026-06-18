@@ -3,9 +3,9 @@ import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 
-AMARILLO = "#F2A900"
-NEGRO    = "#111827"
-GRIS     = "#374151"
+AMARILLO = "#C89B00"
+NEGRO    = "#202428"
+GRIS     = "#626A70"
 VERDE    = "#16A34A"
 ROJO     = "#DC2626"
 
@@ -15,8 +15,8 @@ def _layout(titulo):
             text=titulo, x=0.02, xanchor="left",
             font=dict(size=17, color=NEGRO, family="Arial Black, Arial")
         ),
-        plot_bgcolor="#FFFFFF",
-        paper_bgcolor="#FFFFFF",
+        plot_bgcolor="#FBFBF9",
+        paper_bgcolor="#FBFBF9",
         font=dict(color=NEGRO, size=12, family="Arial, sans-serif"),
         height=430,
         margin=dict(l=62, r=18, t=68, b=58),
@@ -24,21 +24,21 @@ def _layout(titulo):
             color=NEGRO,
             title_font=dict(color=NEGRO, size=13),
             tickfont=dict(color=NEGRO, size=11),
-            gridcolor="#D1D5DB",
-            linecolor="#4B5563",
-            zerolinecolor="#9CA3AF",
+            gridcolor="#D9DBD8",
+            linecolor="#626A70",
+            zerolinecolor="#A7ACA8",
             automargin=True,
         ),
         yaxis=dict(
             color=NEGRO,
             title_font=dict(color=NEGRO, size=13),
             tickfont=dict(color=NEGRO, size=11),
-            gridcolor="#D1D5DB",
-            linecolor="#4B5563",
-            zerolinecolor="#9CA3AF",
+            gridcolor="#D9DBD8",
+            linecolor="#626A70",
+            zerolinecolor="#A7ACA8",
             automargin=True,
         ),
-        hoverlabel=dict(bgcolor="#15191E", font_color="#FFFFFF"),
+        hoverlabel=dict(bgcolor="#202428", font_color="#FFFFFF"),
     )
 
 def grafica_produccion_diaria(q_dia_litros, dias):
