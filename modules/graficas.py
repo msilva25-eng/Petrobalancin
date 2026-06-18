@@ -3,8 +3,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 
-AMARILLO = "#C89B00"
-NEGRO    = "#202428"
+AMARILLO = "#FFCD11"
+NEGRO    = "#1A1A1A"
 GRIS     = "#626A70"
 VERDE    = "#16A34A"
 ROJO     = "#DC2626"
@@ -38,7 +38,7 @@ def _layout(titulo):
             zerolinecolor="#A7ACA8",
             automargin=True,
         ),
-        hoverlabel=dict(bgcolor="#202428", font_color="#FFFFFF"),
+        hoverlabel=dict(bgcolor="#1A1A1A", font_color="#FFFFFF"),
     )
 
 def grafica_produccion_diaria(q_dia_litros, dias):

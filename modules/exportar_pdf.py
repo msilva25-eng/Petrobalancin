@@ -13,11 +13,11 @@ from reportlab.graphics.charts.barcharts import VerticalBarChart
 from datetime import datetime
 import os, io, math
 
-AMARILLO   = colors.HexColor("#F2B705")
-AZUL       = colors.HexColor("#4A90C2")
-NEGRO      = colors.HexColor("#1F2937")
-GRIS       = colors.HexColor("#4B5563")
-GRIS_CLARO = colors.HexColor("#F5F8FC")
+AMARILLO   = colors.HexColor("#FFCD11")
+AZUL       = colors.HexColor("#5F666B")  # Gris acero; nombre conservado por compatibilidad
+NEGRO      = colors.HexColor("#1A1A1A")
+GRIS       = colors.HexColor("#5F666B")
+GRIS_CLARO = colors.HexColor("#F4F5F2")
 BLANCO     = colors.white
 
 def _estilos():
