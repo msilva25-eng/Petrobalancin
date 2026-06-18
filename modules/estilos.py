@@ -292,9 +292,9 @@ div[data-baseweb="select"] * {
 }
 [data-testid="stNumberInput"] [data-baseweb="input"] {
     overflow: hidden !important;
-    border: 1px solid #73797D !important;
-    border-radius: 10px !important;
-    box-shadow: none !important;
+    border: 2px solid #4B5053 !important;
+    border-radius: 11px !important;
+    box-shadow: 0 2px 7px rgba(26,26,26,.10) !important;
 }
 [data-testid="stNumberInput"] input,
 [data-testid="stNumberInput"] input[type="number"] {
@@ -309,11 +309,11 @@ div[data-baseweb="select"] * {
 }
 [data-testid="stNumberInput"] button {
     min-width: 46px !important;
-    background: #24282B !important;
+    background: #303437 !important;
     color: #FFFFFF !important;
     -webkit-text-fill-color: #FFFFFF !important;
     border: 0 !important;
-    border-left: 1px solid #4A5054 !important;
+    border-left: 2px solid #17191A !important;
     border-radius: 0 !important;
     box-shadow: none !important;
 }
