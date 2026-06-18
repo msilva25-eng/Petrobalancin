@@ -567,31 +567,41 @@ elif SA == "Gráficas":
         r    = st.session_state["resultados"]
         p    = st.session_state["params"]
         meta = st.session_state["meta"]
-        tab1, tab2, tab3, tab4, tab5 = st.tabs([
-            "Producción diaria", "Por hora", "Por unidad",
-            "Comparación con meta", "Sensibilidad"
-        ])
-        with tab1:
+        opciones_grafica = [
+            "Producción acumulada por día",
+            "Producción acumulada por hora",
+            "Comparación por unidad de medida",
+        ]
+        if meta and meta > 0:
+            opciones_grafica.append("Comparación con la meta")
+        opciones_grafica.append("Análisis de sensibilidad")
+
+        grafica_seleccionada = st.selectbox(
+            "Selecciona la gráfica que deseas consultar",
+            opciones_grafica,
+            key="selector_grafica"
+        )
+        st.caption("La gráfica se adapta automáticamente al tamaño de tu pantalla.")
+        config_grafica = {"displayModeBar": False, "responsive": True}
+
+        if grafica_seleccionada == "Producción acumulada por día":
             fig1 = grafica_produccion_diaria(r["q_dia_litros"], p["dias"])
-            st.plotly_chart(fig1, use_container_width=True)
-        with tab2:
+            st.plotly_chart(fig1, use_container_width=True, config=config_grafica)
+        elif grafica_seleccionada == "Producción acumulada por hora":
             fig2 = grafica_por_hora(r["q_hora_litros"], p["horas_dia"], p["tiempo_activo_pct"])
-            st.plotly_chart(fig2, use_container_width=True)
-        with tab3:
+            st.plotly_chart(fig2, use_container_width=True, config=config_grafica)
+        elif grafica_seleccionada == "Comparación por unidad de medida":
             fig3 = grafica_comparacion_unidades(r["q_total_litros"], r["q_total_m3"], r["q_total_barriles"])
-            st.plotly_chart(fig3, use_container_width=True)
-        with tab4:
-            if meta and meta > 0:
-                fig4 = grafica_meta(r["q_total_barriles"], meta)
-                st.plotly_chart(fig4, use_container_width=True)
-            else:
-                st.info("Ingresa una meta de producción en Datos de operación para ver esta gráfica.")
-        with tab5:
+            st.plotly_chart(fig3, use_container_width=True, config=config_grafica)
+        elif grafica_seleccionada == "Comparación con la meta":
+            fig4 = grafica_meta(r["q_total_barriles"], meta)
+            st.plotly_chart(fig4, use_container_width=True, config=config_grafica)
+        else:
             fig5 = grafica_sensibilidad(
                 p["diametro_cm"], p["carrera_cm"], p["eficiencia_pct"],
                 p["horas_dia"], p["dias"], p["tiempo_activo_pct"]
             )
-            st.plotly_chart(fig5, use_container_width=True)
+            st.plotly_chart(fig5, use_container_width=True, config=config_grafica)
 
         st.markdown("---")
         if st.button("Exportar reporte PDF →", key="btn_exportar_graficas"):
